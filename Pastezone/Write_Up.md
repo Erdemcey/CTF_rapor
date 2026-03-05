@@ -20,7 +20,7 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 #### Analiz:
 - Siteye giriş yaptığımız zaman bizi bir yasadışı haber ticareti sitesi karşılıyor. 
 
-![Site girişi](image1.png)
+![Site girişi](image1.png?v=1)
 
 - Biraz sörf yapınca flag postlardan birinde bizi buluyor. 
 
@@ -44,7 +44,7 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 - Yazdığımız metinlerin arkada sınıflandırıldığını fark ettik. Yazdığımızın JS olduğunu anlayan bir şablon motoru çalışıyor.
 - SSTI zafiyetini kanıtlamak için `{{7*7}}` yazıp post attık ve sonuç 49 döndü.
 
- ![SSTI testi](image3.png)
+ ![SSTI testi](image3.png?v=1)
 
 #### Silahlanma (Weaponization):
 - Şablon motorunu tespit etmek için bazı denemeler yapıldı:
@@ -91,14 +91,14 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 
 #### Post-Exploitation: 
 
-![Shell erişimi](image4.png)
+![Shell erişimi](image4.png?v=1)
 
 - Birazda bu tarafda sörf yaptık ve bir pastezone.db'ye eriştik.
 - DB içerisinde tek bir tablo var. Kolon bilgilerini yazdırdığımız zaman 
 
-![DB tablosu](image5.png) 
+![DB tablosu](image5.png?v=1) 
 
-![DB şeması](image6.png)
+![DB şeması](image6.png?v=1)
 
 Komutlar:
 ```
@@ -126,11 +126,11 @@ CREATE TABLE notes (
 - Sistemde daha fazla gezemediğimiz için yetkileri kontrol ettik ve root olmamız gerektiğini anladık.
 - Root olmak için `getcap -r / 2>/dev/null` komutuyla şansımızı deneyeceğimiz alanı belirledik.
 
- ![Getcap çıktısı](image7.png)
+ ![Getcap çıktısı](image7.png?v=1)
 
 - Çıktıdan bakınca zafiyetimiz anlaşılıyor ve `php8.4 -r "posix_setuid(0); system('/bin/bash');"` komutuyla root oluyoruz. 
 
-![Root erişimi](image8.png)
+![Root erişimi](image8.png?v=1)
 
 
 ```
@@ -147,7 +147,7 @@ root
 
 - Bu noktadan sonra arama tarama başladı ve root dizininde bilgi aramaya başladık.
 
- ![Root dizini](image9.png)
+ ![Root dizini](image9.png?v=1)
 
 ```
 cd root
