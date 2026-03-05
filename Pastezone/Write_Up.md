@@ -18,7 +18,10 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 ### Flag 1: energy.gov.hv gönderisini paylaşan kullanıcının iletişim e-posta adresi nedir?
 
 #### Analiz:
-- Siteye giriş yaptığımız zaman bizi bir yasadışı haber ticareti sitesi karşılıyor. ![Site girişi](image1.png)
+- Siteye giriş yaptığımız zaman bizi bir yasadışı haber ticareti sitesi karşılıyor. 
+
+![Site girişi](image1.png)
+
 - Biraz sörf yapınca flag postlardan birinde bizi buluyor. 
 
 ### Flag 2: energy.gov.hv verilerini paylaşan saldırganın IP adresi nedir?
@@ -39,7 +42,9 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 - Search kısmında sqlmap ve manuel zafiyet araştırması yapıldıysa sonuç alınamadı.
 - Post kısmında stored XSS tahmini ile araştırmalar yapıldı ve sonuç alınamadı.
 - Yazdığımız metinlerin arkada sınıflandırıldığını fark ettik. Yazdığımızın JS olduğunu anlayan bir şablon motoru çalışıyor.
-- SSTI zafiyetini kanıtlamak için `{{7*7}}` yazıp post attık ve sonuç 49 döndü. ![SSTI testi](image3.png)
+- SSTI zafiyetini kanıtlamak için `{{7*7}}` yazıp post attık ve sonuç 49 döndü.
+
+ ![SSTI testi](image3.png)
 
 #### Silahlanma (Weaponization):
 - Şablon motorunu tespit etmek için bazı denemeler yapıldı:
@@ -84,9 +89,16 @@ Görevin; bu paylaşımdan sorumlu kişi ya da grupları tespit etmek, PasteZone
 
 - Artık içerideyiz.
 
-#### Post-Exploitation: ![Shell erişimi](image4.png)
+#### Post-Exploitation: 
+
+![Shell erişimi](image4.png)
+
 - Birazda bu tarafda sörf yaptık ve bir pastezone.db'ye eriştik.
-- DB içerisinde tek bir tablo var. Kolon bilgilerini yazdırdığımız zaman ![DB tablosu](image5.png) ![DB şeması](image6.png)
+- DB içerisinde tek bir tablo var. Kolon bilgilerini yazdırdığımız zaman 
+
+![DB tablosu](image5.png) 
+
+![DB şeması](image6.png)
 
 Komutlar:
 ```
@@ -112,8 +124,14 @@ CREATE TABLE notes (
 
 #### Etki Yükseltme (Privilege Escalation):
 - Sistemde daha fazla gezemediğimiz için yetkileri kontrol ettik ve root olmamız gerektiğini anladık.
-- Root olmak için `getcap -r / 2>/dev/null` komutuyla şansımızı deneyeceğimiz alanı belirledik. ![Getcap çıktısı](image7.png)
-- Çıktıdan bakınca zafiyetimiz anlaşılıyor ve `php8.4 -r "posix_setuid(0); system('/bin/bash');"` komutuyla root oluyoruz. ![Root erişimi](image8.png)
+- Root olmak için `getcap -r / 2>/dev/null` komutuyla şansımızı deneyeceğimiz alanı belirledik.
+
+ ![Getcap çıktısı](image7.png)
+
+- Çıktıdan bakınca zafiyetimiz anlaşılıyor ve `php8.4 -r "posix_setuid(0); system('/bin/bash');"` komutuyla root oluyoruz. 
+
+![Root erişimi](image8.png)
+
 
 ```
 www-data@debian:/var/www/html$ whoami
@@ -127,7 +145,9 @@ whoami
 root
 ```
 
-- Bu noktadan sonra arama tarama başladı ve root dizininde bilgi aramaya başladık. ![Root dizini](image9.png)
+- Bu noktadan sonra arama tarama başladı ve root dizininde bilgi aramaya başladık.
+
+ ![Root dizini](image9.png)
 
 ```
 cd root
