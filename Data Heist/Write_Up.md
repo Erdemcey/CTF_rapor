@@ -88,6 +88,8 @@ daha sonra biraz bekleyin ve `/bin/bash` yazarak gerçek shell'e geçin.
 
   Komutu hedef makinede çalıştırırsanız, sunucu bu PDF'i `http://<HEDEF_IP>:8080/Ja23s6_techinnovations_invoice.pdf` adresinden sağlayacaktır. Flag 3 bu PDF içinde yazıyor. Alternatif olarak PDF'i base64'e çevirip kendi bilgisayarınızda dönüştürebilirsiniz.
 
+  ![Exploit geliştirme](images/image1.png)
+
 - **Flag 4**: `.go` uzantılı bir veritabanı dosyası var. `strings` ile açarsanız, veritabanı bağlantı adresini görürsünüz.
 
 ## Sonuç ve Öğrenilenler
