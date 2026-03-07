@@ -45,9 +45,18 @@ HEXAR
 
 ### Sisteme İlk Bakış
 
-- Bizi bir giriş sayfası karşılıyor ve notta bırakılan bilgi ile girmemiz isteniyor. ![Giriş sayfası](images/image.png)
-- Sisteme giriş yapınca bir sohbet paneli karşılıyor. ![Sohbet paneli](images/image1.png)
-- İlk flag'imiz bu sayfada çıktı; üst tarafta bulunan Bitcoin bölümünde yazıyor. ![Bitcoin adresi](images/image2.png)
+- Bizi bir giriş sayfası karşılıyor ve notta bırakılan bilgi ile girmemiz isteniyor. 
+
+![Giriş sayfası](images/image.png)
+
+- Sisteme giriş yapınca bir sohbet paneli karşılıyor.
+
+ ![Sohbet paneli](images/image1.png)
+
+- İlk flag'imiz bu sayfada çıktı; üst tarafta bulunan Bitcoin bölümünde yazıyor. 
+
+![Bitcoin adresi](images/image2.png)
+
 - Mesaj yolladığımız zaman bir listeden sırayla cevap geliyor gibi görünüyor.
 
 ## Aktif Tarama ve Sömürü (Exploitation)
@@ -89,8 +98,13 @@ PHPSESSID=93a1f05cf29f30d95fb3380125e0f4d0
 
 Bunu F12 ile açılan panelde Application > Cookies bölümünde cookie olarak yazın ve sayfayı yenileyin.
 
-- Artık admin panelindeyiz. ![Admin paneli](images/image4.png)
-- Kendi sohbetimize geldiğimiz zaman Flag 2'yi buluyoruz. ![Flag 2](images/image5.png)
+- Artık admin panelindeyiz. 
+
+![Admin paneli](images/image4.png)
+
+- Kendi sohbetimize geldiğimiz zaman Flag 2'yi buluyoruz. 
+
+![Flag 2](images/image5.png)
 
 ### Flag 3 – IP Adresi
 
@@ -100,7 +114,9 @@ Bunu F12 ile açılan panelde Application > Cookies bölümünde cookie olarak y
 http://<lab-ip>/d3a8f4966_admin/victim_details.php?id=1
 ```
 
-adresine gidin. ![Victim detayları](images/image6.png)
+adresine gidin. 
+
+![Victim detayları](images/image6.png)
 
 İşte buradaki IP, 3. flag'imiz.
 
@@ -117,10 +133,18 @@ Bu komutu çalıştırın ve `filemanager/` uzantısını keşfedin.
 ## Post-Exploitation
 
 - "Tiny File Manager" ismini Chrome'da tarayın ve exploit'i bulun.
-- İçeriği biraz kurcalayın ve `admin : admin@123` kullanıcı adı ve parolasını görün ve deneyin. ![Tiny File Manager](images/image8.png)
-- Tebrikler, artık yönetim sistemindeyiz. ![Başarılı giriş](images/image9.png)
+- İçeriği biraz kurcalayın ve `admin : admin@123` kullanıcı adı ve parolasını görün ve deneyin. 
+
+![Tiny File Manager](images/image8.png)
+
+- Tebrikler, artık yönetim sistemindeyiz. 
+
+![Başarılı giriş](images/image9.png)
+
 - İçeride `hexar` klasörünü görün ve açın; içindeki `target.txt` dosyasına girin.
-- İlk mail sizin 4. flag'iniz. ![Target listesi](images/image10.png)
+- İlk mail sizin 4. flag'iniz. 
+
+![Target listesi](images/image10.png)
 
 ## Komutlar Özeti
 
