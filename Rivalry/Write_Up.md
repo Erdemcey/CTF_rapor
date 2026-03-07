@@ -30,9 +30,6 @@ Hedefin, Orbitronix Systems'ın anlaştığı Create Edge Reklam Ajansını hack
 
 - Etkileşime girilen bir alan yok; sadece site yenileme ve sayfa içi yönlendirme.
 - Bir reklam sitesi, şirket hakkında bilgi veriyor sadece.
-
- ![Reklam sitesi](images/image.png)
-
 - Flag 1 en sondaki yorumlar kısmında söyleniyor. 
 
 ![Yorumlar](images/image1.png)
@@ -164,6 +161,8 @@ komutunu yazın ve shell panelinize 4444 portunuza düşsün.
 ## Sonuç
 
 Tebrikler! Odayı tamamladınız.
+
+ ![Reklam sitesi](images/image.png)
 
 ---
 
